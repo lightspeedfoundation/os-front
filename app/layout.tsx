@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Space_Mono } from "next/font/google";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -16,18 +17,45 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
+const site = getSiteUrl();
+const defaultTitle = "Speed OS — Crypto trading Chrome extension & onchain workspace";
+const defaultDescription =
+  "Browser crypto trading workspace: replace Chrome’s new tab with Speed OS. Ask bar, panels, optional Cmd+K terminal—same Lightspeed-CLI tools, encrypted on-device vault, optional MCP. No extra Node install.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(site),
+  title: { default: defaultTitle, template: "%s | Speed OS" },
+  description: defaultDescription,
+  alternates: { canonical: "/" },
   icons: {
     icon: "/brand/speed-logo.png",
   },
-  title: "Speed OS — Onchain Trading Workspace",
-  description:
-    "Replace Chrome’s new tab with Speed OS: Ask Speed, dock panels, and optional Cmd+K terminal. Built-in Lightspeed-CLI tools, encrypted on-device vault, optional MCP—no separate Node install.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
-    title: "Speed OS — Onchain Trading Workspace",
-    description:
-      "Ask Speed, terminal panel, and dock—same tools as the desktop app in your browser. Encrypted vault on your device; optional MCP for API settings.",
     type: "website",
+    url: site,
+    siteName: "Speed OS",
+    locale: "en_US",
+    title: defaultTitle,
+    description:
+      "Trade onchain from every new tab: same CLI tools in the browser, keys on your device, optional mcp.ispeed.pro for API env. Chrome extension for DeFi and browser trading.",
+    images: [
+      {
+        url: new URL("opengraph-image", site).toString(),
+        width: 1200,
+        height: 630,
+        alt: "Speed OS — onchain trading in your new tab",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
   },
 };
 

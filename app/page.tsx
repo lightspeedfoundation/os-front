@@ -10,10 +10,17 @@ import { MobileInstallBar } from "@/components/MobileInstallBar";
 import { SkipLink } from "@/components/SkipLink";
 import { SocialProof } from "@/components/SocialProof";
 import { TechIntegrations } from "@/components/TechIntegrations";
+import { getHomepageJsonLd } from "@/lib/home-json-ld";
+
+const homepageJsonLd = getHomepageJsonLd();
 
 export default function Page() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+      />
       <SkipLink />
       <Header />
       <main id="install" className="pb-24 md:pb-0">
