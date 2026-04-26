@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CHROME_WEB_STORE_URL } from "@/lib/chrome-store";
 import { GITHUB_SPEED_MCP_URL } from "@/lib/site-links";
 
@@ -36,6 +37,12 @@ export function CtaBand() {
           >
             View on GitHub ↗
           </a>
+          <Link
+            href="/learn"
+            className="inline-flex items-center gap-2 rounded-[10px] border border-borderw2 px-7 py-[15px] font-mono text-sm text-mutted2 transition hover:border-white/20 hover:bg-borderw hover:text-soft"
+          >
+            Read guides (swap, bridge, MCP)
+          </Link>
         </div>
         <div className="relative mt-6 flex flex-wrap items-center justify-center gap-4 text-[11px] text-mutted md:gap-6">
           <span>

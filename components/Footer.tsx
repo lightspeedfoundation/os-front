@@ -19,14 +19,19 @@ export function Footer() {
         <div className="flex flex-wrap items-center gap-6 md:gap-8">
           <ul className="flex flex-wrap gap-5 text-[12px] md:gap-6">
             <li>
-              <a href="#product" className="transition hover:text-soft">
+              <Link href="/#product" className="transition hover:text-soft">
                 Product
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#faq" className="transition hover:text-soft">
+              <Link href="/#faq" className="transition hover:text-soft">
                 FAQ
-              </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/learn" className="transition hover:text-soft">
+                Learn
+              </Link>
             </li>
             <li>
               <a

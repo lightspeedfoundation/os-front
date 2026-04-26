@@ -1,0 +1,62 @@
+---
+slug: unlock-vault-for-signing
+title: "Unlock the vault and run a command in the new tab"
+seoTitle: "Unlock Speed OS vault and use terminal in new tab | Speed OS"
+description: "How signing works in Speed OS: on-device encrypted vault, session unlock, and using the optional terminal in the new tab. Placeholder screenshots; replace with real UI when publishing."
+date: 2026-04-25T00:00:00.000Z
+updated: 2026-04-25T00:00:00.000Z
+published: true
+guideType: other
+howTo:
+  name: "Unlock vault and run a command (Speed OS)"
+  description: "Open the new tab, unlock the vault for a session, then use Ask or the terminal to run a tool that requires signing."
+  step:
+    - name: "New tab"
+      text: "Open a new tab to the Speed OS workspace."
+      image: "/images/guides/unlock-vault-for-signing/step-1.png"
+    - name: "Unlock session"
+      text: "When a command needs signing, unlock the vault for the current session. Keep your device physically safe; this is software on your machine, not a hardware wallet."
+      image: "/images/guides/unlock-vault-for-signing/step-2.png"
+    - name: "Run and review"
+      text: "Run the command, read any preview, and sign only if the action matches your intent."
+      image: "/images/guides/unlock-vault-for-signing/step-3.png"
+---
+
+**Speed OS stores trading material in an on-device encrypted vault; it is decrypted in memory for a session when you unlock—this is a standard “software wallet on your computer” model, not custodial storage on a Speed server.** The new tab is where you run **Ask** and the optional **terminal** for CLI-like commands in the browser.
+
+**At a glance**
+
+- **Vault** = local encrypted storage in Chrome, not a cloud account that holds your raw private key.
+- **Unlock** = time-bounded access for signing while you are actively using the session.
+- **Optional MCP** = environment merge (e.g. `mcp.ispeed.pro` patterns), not a replacement for the vault key.
+
+## Step 1 — Open the workspace
+
+Open a new tab. The Speed OS UI should be your entry point: faster than hunting the extension icon for every small action.
+
+![New tab — placeholder image](/images/guides/unlock-vault-for-signing/step-1.png)
+
+## Step 2 — Unlock for signing
+
+When a flow needs a signature, complete the unlock step for the **session** and confirm you are on the **right account** and **right network** context for what you are about to do.
+
+![Vault unlock — placeholder image](/images/guides/unlock-vault-for-signing/step-2.png)
+
+## Step 3 — Run a command, read the preview
+
+Use Ask or the terminal to run a tool. If a preview is shown, treat it like any other wallet: **do not sign** if the calldata, spender, or destination is unexpected.
+
+![Command + preview — placeholder image](/images/guides/unlock-vault-for-signing/step-3.png)
+
+**FAQ**
+
+**Is this a hardware wallet?**  
+No. Hardware wallets add a separate trust boundary. Speed OS is software on your device: your risk model includes malware, physical access, and extension updates.
+
+**What about MCP?**  
+MCP is optional and is meant to **merge** non-custodial environment settings. It should not “take custody” of your private key. If anything suggests otherwise, stop and read the current docs and manifest for your installed version.
+
+## Related
+
+- [What is MCP in crypto?](/concepts/what-is-mcp-crypto) — how MCP is defined for this product space.
+- [Speed OS vs MetaMask for trading](/compare/speed-os-vs-metamask-for-trading) — when to pair tools vs only use a wallet.

@@ -1,0 +1,41 @@
+---
+slug: mcp-crypto-trading-agents
+title: "MCP, agents, and browser trading (Speed OS)"
+seoTitle: "MCP for crypto trading agents in the browser | Speed OS"
+description: "How Model Context Protocol pairs with a browser trading workspace: same tools as the CLI, optional remote env from an MCP host, and keys in an on-device vault."
+date: 2026-04-25T00:00:00.000Z
+updated: 2026-04-25T00:00:00.000Z
+published: true
+---
+
+**An “agent” in this context is any automation that runs commands on your behalf with a clear policy:** it might be a local script, a model-driven flow, or a product feature that composes **swap**, **bridge**, and **read** operations. **MCP** is one way to supply the *non-key* context those agents need in a structured way, while the **private key** remains in a vault you unlock on the device.
+
+**At a glance**
+
+- **Agent layer:** “what should we try to do next?” (intents, quotes, safety checks).
+- **Execution layer:** the same **Speed / Lightspeed-CLI** surface you would use in a terminal—now available from the new tab in Speed OS.
+- **Context layer (MCP):** optional **environment merge** from a host like `mcp.ispeed.pro` so API-related settings can exist without pasting secrets into random web forms.
+
+**Why the new tab matters**  
+Most trading UIs fight for attention in a sea of browser tabs. Putting the workspace in the **new tab** keeps portfolio, swap, and bridge actions **one keystroke away**, which is especially useful when you are iterating with an agent that issues many small steps.
+
+**Risk framing (read this once)**  
+MCP is powerful because it is **dynamic**. You should still verify:
+
+- **What** is merged (read-only config vs anything that could move funds), and
+- **Where** signing happens (in-extension / on-device vs a remote custodian).
+
+If a product claims “MCP holds your key,” be skeptical. The pattern Speed OS documents is **local vault** + **optional env merge** that should not replace your stored secret.
+
+**FAQ**
+
+**Do I need MCP to use Speed OS?**  
+No. MCP is optional. You can use the in-browser tools with local vault behavior; MCP is for parity with certain CLI and agent-style workflows.
+
+**Is this the same as a Telegram trading bot?**  
+Not exactly. The core difference is **where execution and signing** happen, and **what software** you trust. Speed OS is a **Chrome extension** with an on-device vault model; always read the current manifest and permissions.
+
+## Related
+
+- [What is MCP in crypto?](/concepts/what-is-mcp-crypto) — definition-first explainer.
+- [How to swap ETH to USDC in the browser](/guides/swap-eth-to-usdc-in-browser) — step-by-step with the new tab UI.

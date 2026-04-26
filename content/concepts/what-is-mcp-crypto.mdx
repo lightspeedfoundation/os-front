@@ -1,0 +1,43 @@
+---
+slug: what-is-mcp-crypto
+title: "What is MCP in crypto? (Model Context Protocol)"
+seoTitle: "What is MCP in crypto? Model Context Protocol explained | Speed OS"
+description: "MCP (Model Context Protocol) lets AI tools load secure, structured context (like API env) from a server. In trading, that can mean an MCP server merges read-only or allowed settings while your keys stay on-device."
+date: 2026-04-25T00:00:00.000Z
+updated: 2026-04-25T00:00:00.000Z
+published: true
+---
+
+**MCP (Model Context Protocol) is an open way for clients (like a Chrome extension or a coding agent) to request structured “context” from a server in a standard format.** In crypto, the interesting part is not the buzzword—it is *what* gets merged: things like API endpoints, feature flags, or other non-custodial configuration, separate from the private key that funds transactions.
+
+**At a glance**
+
+- **What it is:** a protocol for **tool ↔ server** context exchange, not a wallet replacement.
+- **Why it matters in DeFi:** you can keep **signing keys in a local vault** while still letting the product pull **allowlisted** remote settings (for example, default RPC or MCP environment for CLI parity).
+- **What it is not:** MCP does not “hold your keys” on a server. Treat any design that conflates MCP env with custody as a red flag.
+
+In **Speed OS**, the optional default MCP host is `mcp.ispeed.pro`, used in a similar role to `speed start` in the desktop CLI: the extension can generate/store keys in extension storage, fetch an encrypted environment over Streamable HTTP, and **merge** it into the runtime before commands run. Your vault’s `PRIVATE_KEY` is not intended to be overwritten by that merge—check the product docs and manifest for the exact behavior in your build.
+
+**How to think about it in one sentence:** MCP is a **plumbing layer** for “what context does this session have?”, while your wallet is still the **authorization layer** for onchain actions.
+
+**When to use an MCP server for trading tools**
+
+- You want **one place** to rotate non-secret configuration (e.g. provider endpoints) without shipping a new extension build for every change.
+- You want **agent-style workflows** where a model or script can run with the *same* merged environment a human would get from the CLI.
+- You want a **clear split** between “server-delivered config” and “user-held secrets on device”.
+
+**FAQ**
+
+**Is MCP the same as a smart contract wallet?**  
+No. MCP is offchain protocol plumbing between a client and a server. Smart contracts are onchain.
+
+**Does MCP make my keys custodial?**  
+Not by definition. Whether funds are custodial depends on *who controls signing material* and *what the code does*. A well-designed client keeps the signing key local and only merges non-sensitive or explicitly allowed data from MCP.
+
+**Where can I read more?**  
+Start with the **Speed OS** docs and the open `speed-mcp` repo linked from the site, then compare with your own threat model.
+
+## Related
+
+- [MCP, agents, and browser trading](/concepts/mcp-crypto-trading-agents) — how agent-style flows connect to a new-tab workspace.
+- [What is Speed OS vs MetaMask for trading?](/compare/speed-os-vs-metamask-for-trading) — practical split when you are choosing a workflow.

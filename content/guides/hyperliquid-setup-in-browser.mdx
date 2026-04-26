@@ -1,0 +1,114 @@
+---
+slug: hyperliquid-setup-in-browser
+title: "First-time Hyperliquid setup from the Speed OS new tab"
+seoTitle: "Hyperliquid setup in browser (HL + bridge + perp) | Speed OS"
+description: "Run HL setup, fund with USDC on Base, bridge to HyperEVM, optionally pick up HYPE, then move USDC from EVM margin to perp — all from Speed OS with explicit commands."
+date: 2026-04-25T00:00:00.000Z
+updated: 2026-04-25T00:00:00.000Z
+published: false
+guideType: other
+howTo:
+  name: "Hyperliquid first-time setup in Speed OS"
+  description: "Connect HL, fund USDC on HyperEVM from Base, optionally bridge to HYPE, then run evm-to-perp so you can trade perps."
+  step:
+    - name: "Run HL setup"
+      text: "From the Ask field run speed hl setup and complete the prompts so Hyperliquid is wired for this browser session."
+      image: "/images/guides/hyperliquid-setup-in-browser/step-1.png"
+    - name: "Swap to USDC on Base (funding path)"
+      text: "If you are not already holding USDC on Base, run a small swap into USDC so you have something to bridge. Example: speed swap pay eth receive usdc -a 0.01 (adjust amount; review the quote on the right before Run)."
+      image: "/images/guides/hyperliquid-setup-in-browser/step-2.png"
+    - name: "Bridge USDC to Hyperliquid"
+      text: "Move USDC from Base to HyperEVM with an explicit bridge line, e.g. speed bridge 10 usdc from base to hyperliquid. Wait for the quote in the Confirm panel on the right, then Run when it matches your intent. If you get a low-liquidity quote error, lower size or retry with another route/time."
+      image: "/images/guides/hyperliquid-setup-in-browser/step-3.png"
+    - name: "Optional — HYPE on Hyperliquid"
+      text: "If you also want HYPE on Hyperliquid for fees or routing, use the Base → Hyperliquid USDC → HYPE pattern, e.g. speed bridge 1 base hyperliquid usdc hype (tune the leading amount; tiny sizes can still fail with low-liquidity depending on route conditions)."
+      image: "/images/guides/hyperliquid-setup-in-browser/step-4.png"
+    - name: "EVM margin → perp"
+      text: "After funds sit on HyperEVM, move USDC from EVM margin into perp trading: speed hl evm to perp all. If it says no free USDC on HyperCore spot, your bridge/to-core leg has not landed yet; complete funding first, then retry."
+      image: "/images/guides/hyperliquid-setup-in-browser/step-5.png"
+---
+
+**This path is written for an account that is *not* already funded on Hyperliquid** — which is ideal for a tutorial: you see the real setup chain (HL setup → USDC on Base → bridge in → optional HYPE leg → evm-to-perp) instead of skipping straight to the last command.
+
+**At a glance**
+
+- Commands are shown **with** the `speed` prefix to match what Speed OS sends to the Lightspeed-style CLI under the hood.
+- **Optional** in a mature wallet often means “skip if you already have balances.” Here we **keep** the optional legs so screenshots and copy match a cold start.
+- **Always** read the **Confirm** quote on the right before **Run**; never sign blind.
+
+## Command sequence (copy-paste friendly)
+
+```text
+speed hl setup
+```
+
+*(Optional in prod, included here for a fresh account)* swap something into **USDC on Base**, for example:
+
+```text
+speed swap pay eth receive usdc -a 0.01
+```
+
+Bridge **USDC** from **Base** to **Hyperliquid / HyperEVM**:
+
+```text
+speed bridge 10 usdc from base to hyperliquid
+```
+
+*(Optional)* pick up **HYPE** on Hyperliquid (small notional on purpose):
+
+```text
+speed bridge 1 base hyperliquid usdc hype
+```
+
+Move **EVM margin USDC** into **perp**:
+
+```text
+speed hl evm to perp all
+```
+
+## Step 1 — `speed hl setup`
+
+Open a new tab, run **`speed hl setup`**, and follow the on-screen flow until HL reports ready for deposits and trading commands.
+
+![HL setup — run speed hl setup from the new tab](/images/guides/hyperliquid-setup-in-browser/step-1.png)
+
+## Step 2 — USDC on Base (swap)
+
+If you do not already have USDC on Base, execute a **small** swap into USDC. Use the quote panel on the right to sanity-check price impact and fees before **Run**.
+
+![Swap into USDC on Base for the bridge leg](/images/guides/hyperliquid-setup-in-browser/step-2.png)
+
+## Step 3 — Bridge USDC to Hyperliquid
+
+Use an explicit **Base → hyperliquid** USDC bridge (amount and token must match your risk tolerance). Same rule as other bridge flows: **Confirm** shows the route on the **right**; only **Run** when the preview matches your intent. In this capture run, the quote path returned a low-liquidity warning, so this step also documents that failure mode.
+
+![Bridge USDC Base → Hyperliquid](/images/guides/hyperliquid-setup-in-browser/step-3.png)
+
+## Step 4 — Optional HYPE leg (`usdc` → `hype`)
+
+When you want **HYPE** on Hyperliquid as well, the product supports the **Base → Hyperliquid** pattern with a trailing **`hype`** leg, e.g. **`speed bridge 1 base hyperliquid usdc hype`**. Keep size small while learning; if quote returns low liquidity, retry with different size or wait for route conditions to improve.
+
+![Bridge USDC toward HYPE on Hyperliquid](/images/guides/hyperliquid-setup-in-browser/step-4.png)
+
+## Step 5 — `speed hl evm to perp all`
+
+With USDC visible on the HyperEVM side, run **`speed hl evm to perp all`** to sweep EVM-margin USDC into **perp** collateral. In this run, the command returned **\"No free USDC on HyperCore spot\"**, which confirms funding had not reached the required leg yet. Treat that message as a checkpoint: complete bridge/to-core first, then retry.
+
+![EVM margin to perp — speed hl evm to perp all](/images/guides/hyperliquid-setup-in-browser/step-5.png)
+
+**FAQ**
+
+**Can I skip the swap if I already have USDC on Base?**  
+Yes. The swap step exists for **empty** accounts; skip it when your Base USDC balance is already sufficient for the bridge size you choose.
+
+**Is the HYPE bridge step mandatory?**  
+No. It is **optional** for traders who want HYPE on Hyperliquid; omit it if you only need USDC in perp.
+
+**Where do I read more on bridge syntax?**  
+See [How to bridge tokens across chains in the browser](/guides/bridge-tokens-across-chains-in-browser) — especially the **amount + token** ordering after `speed bridge`.
+
+## Related
+
+- [Bridge tokens across chains in the browser](/guides/bridge-tokens-across-chains-in-browser)
+- [Swap ETH to USDC in the browser](/guides/swap-eth-to-usdc-in-browser)
+- [Unlock the vault and run a command in the new tab](/guides/unlock-vault-for-signing)

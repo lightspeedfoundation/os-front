@@ -1,0 +1,39 @@
+---
+slug: speed-os-vs-classic-browser-wallets
+title: "Speed OS vs classic browser wallets (session shape)"
+seoTitle: "Speed OS vs classic browser wallets: new tab workspace | Speed OS"
+description: "Classic browser wallets are mostly tray UIs for signing. Speed OS targets a different session shape: a new-tab onchain workspace with CLI-style tools. Compare by how you work, not only by brand."
+date: 2026-04-25T00:00:00.000Z
+updated: 2026-04-25T00:00:00.000Z
+published: true
+---
+
+**A “classic” browser wallet is usually optimized for: connect site → sign → done.** That is great for dapp sessions. **Speed OS** is optimized for: return to the same **workspace** hundreds of times per day—because the **new tab** is the workspace, not a single dapp’s UI.
+
+**At a glance**
+
+- **Classic wallet pattern:** per-site popups, per-site context, many tabs.
+- **Speed OS pattern:** per-**day** context: new tab, panels, optional terminal, **same** toolset as the Speed CLI in the browser.
+- **MCP note:** optional remote environment merge (`mcp.ispeed.pro` by default) is about **config parity**, not custody. Your signing posture should still be evaluated like any other high-risk software.
+
+**When a classic wallet is enough**  
+You transact infrequently, you do not need a command surface, and you prefer each protocol’s website.
+
+**When a workspace makes sense**  
+You already think in **commands and panels**, you want **less tab thrash**, and you want a consistent place to run “the next small step” in a strategy.
+
+**Tradeoffs (honest)**  
+A workspace is more surface area than a minimal popup wallet. The benefit is productivity; the cost is you should read the extension’s **permissions** and keep Chrome updated.
+
+**FAQ**
+
+**Is this “non-custodial”?**  
+Speed OS is not a hosted custodian of your keys, but the practical security is **your device + your practices**. Read the on-site FAQ about keys and vault storage.
+
+**Is Speed OS a wallet?**  
+It is a **trading workspace** with an on-device vault model. Use precise language: custody and signing are defined by the implementation you run.
+
+## Related
+
+- [Swap ETH to USDC in the browser (guide)](/guides/swap-eth-to-usdc-in-browser) — a concrete flow to compare with “open Uniswap in a tab.”
+- [What is MCP in crypto?](/concepts/what-is-mcp-crypto) — how optional MCP fits the architecture.

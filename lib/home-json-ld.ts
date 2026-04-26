@@ -2,6 +2,7 @@ import { faqs, installSpeedOsHowTo } from "@/lib/faq-data";
 import { CHROME_WEB_STORE_URL } from "@/lib/chrome-store";
 import { GITHUB_SPEED_MCP_URL } from "@/lib/site-links";
 import { getSiteUrl } from "@/lib/site-url";
+import { PRODUCT_DEFINITION_ONE_LINE } from "@/lib/product-definition";
 
 /**
  * JSON-LD graph for the marketing homepage: SoftwareApplication, FAQPage, HowTo.
@@ -13,6 +14,7 @@ export function getHomepageJsonLd(): Record<string, unknown>[] {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       name: "Speed OS",
+      description: PRODUCT_DEFINITION_ONE_LINE,
       applicationCategory: "FinanceApplication",
       operatingSystem: "Chrome",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },

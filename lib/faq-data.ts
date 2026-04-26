@@ -10,32 +10,35 @@ export const faqs: FaqItem[] = [
   {
     q: "What am I actually installing?",
     a: [
-      "You’re installing the Speed OS Chrome extension, which replaces your new tab page.",
-      "It gives you an Ask bar for everyday tasks, side panels for things like your portfolio, and an optional Cmd/Ctrl+K terminal for advanced commands.",
-      "It uses the same tools as Speed CLI via npm.",
+      "You are installing the Speed OS Chrome extension, which replaces Chrome’s new tab page with a trading workspace.",
+      "The workspace includes an Ask bar, dockable side panels, and an optional Cmd/Ctrl+K terminal. It runs the same Lightspeed-CLI tool surface you would use from npm on the desktop—routed through the new tab—without requiring a separate Node install for basic in-browser use.",
     ],
   },
   {
     q: "Does Speed OS hold or control my crypto keys?",
     a: [
-      "No. Speed OS is not a custodial service—we don’t store your keys on our servers.",
-      "Your trading key is encrypted and kept in Chrome’s storage on your device. It’s only decrypted in memory while you’ve unlocked it for a session. We never store the raw key on disk.",
-      "If you use optional MCP integration (mcp.ispeed.pro), that can merge in API-related settings. It does not replace or overwrite the private key you keep in the vault.",
-      "This is normal software-on-your-device security—not a hardware wallet. You’re still responsible for your device and who can use it.",
+      "No. Speed OS is not a custodial service: we do not store your private key on our servers in a way that lets us move your funds.",
+      "Your trading key is encrypted in Chrome’s storage on your device and is only decrypted in memory for a session after you unlock the vault. The raw private key is not written to long-lived plaintext storage by design.",
+      "If you enable optional MCP integration at mcp.ispeed.pro, that path can merge API-related environment settings. It is not a substitute for a hardware wallet, and you remain responsible for physical access to your device.",
     ],
   },
   {
     q: "Why replace the new tab page?",
     a: [
-      "Most people open new tabs all day long. Putting Speed OS there means swaps, bridges, balances, and similar actions are one glance away—without juggling extra tabs and sites.",
+      "A new tab is a high-frequency surface: putting Speed OS there keeps swaps, bridges, balances, and other onchain actions one gesture away, instead of reopening the same set of dapp tabs every time.",
     ],
   },
   {
     q: "What permissions does the extension need—and why?",
     a: [
-      "Chrome will ask for permissions so the extension can work like a serious trading tool, not just a static page.",
-      "That includes things like saving your settings (storage), scheduling small background tasks (alarms), and optional alerts (notifications). It also uses Chrome’s network rules so it can reach the same trusted HTTPS services the CLI uses for trading and chain data—such as 0x, Squid, Alchemy, Hyperliquid, and common RPC endpoints.",
-      "Nothing here is hidden: what we request matches what the extension actually does, and lines up with the extension’s manifest and docs.",
+      "Chrome will request permissions that match a trading-focused extension: e.g. storage (settings), alarms (lightweight background work), and notifications (optional). It also needs network access rules so the extension can talk to the same class of trusted HTTPS services the CLI uses for market data, routing, and chain connectivity.",
+      "Cross-check the live extension manifest in the Chrome Web Store before you install: permissions should read as consistent with the features you intend to use.",
+    ],
+  },
+  {
+    q: "Where are the how-to guides and explainers?",
+    a: [
+      "Use the Learn index at /learn. It links to in-browser how-tos (for example swap and bridge), MCP “what is” pages, and use-case comparison articles.",
     ],
   },
 ];

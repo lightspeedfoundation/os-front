@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Space_Mono } from "next/font/google";
 import { getSiteUrl } from "@/lib/site-url";
+import { PRODUCT_DEFINITION_ONE_LINE, PRODUCT_DEFINITION_SHORT } from "@/lib/product-definition";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -18,9 +19,8 @@ const spaceMono = Space_Mono({
 });
 
 const site = getSiteUrl();
-const defaultTitle = "Speed OS — Crypto trading Chrome extension & onchain workspace";
-const defaultDescription =
-  "Browser crypto trading workspace: replace Chrome’s new tab with Speed OS. Ask bar, panels, optional Cmd+K terminal—same Lightspeed-CLI tools, encrypted on-device vault, optional MCP. No extra Node install.";
+const defaultTitle = "Speed OS — crypto trading in Chrome: new tab workspace (CLI tools)";
+const defaultDescription = PRODUCT_DEFINITION_ONE_LINE;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),
@@ -41,8 +41,7 @@ export const metadata: Metadata = {
     siteName: "Speed OS",
     locale: "en_US",
     title: defaultTitle,
-    description:
-      "Trade onchain from every new tab: same CLI tools in the browser, keys on your device, optional mcp.ispeed.pro for API env. Chrome extension for DeFi and browser trading.",
+    description: PRODUCT_DEFINITION_SHORT,
     images: [
       {
         url: new URL("opengraph-image", site).toString(),
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: defaultTitle,
+    title: "Speed OS — crypto trading Chrome extension & onchain workspace",
     description: defaultDescription,
   },
 };

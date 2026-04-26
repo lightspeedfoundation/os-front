@@ -1,0 +1,65 @@
+---
+slug: swap-eth-to-usdc-in-browser
+title: "How to swap ETH to USDC in your browser (no CEX)"
+seoTitle: "How to swap ETH to USDC in browser (no exchange) | Speed OS"
+description: "Swap from ETH to USDC using Speed OS in Chrome: new tab workspace, on-device vault, and the same swap tooling model as the Speed CLI. Screenshots show the in-product shell (replace with your live captures if needed)."
+date: 2026-04-25T00:00:00.000Z
+updated: 2026-04-25T00:00:00.000Z
+published: true
+guideType: swap
+howTo:
+  name: "Swap ETH to USDC in Speed OS (new tab)"
+  description: "Open the Speed OS new tab, unlock your vault if signing is required, then run a swap from ETH to USDC using the in-browser tools."
+  step:
+    - name: "Open the new tab"
+      text: "Open a new browser tab. Speed OS should load as the new tab page (after install from the Chrome Web Store)."
+      image: "/images/guides/swap-eth-to-usdc-in-browser/step-1.png"
+    - name: "Find swap / Ask"
+      text: "Use the Ask bar or the command entry pattern you prefer to start a swap intent (ETH → USDC, choose chain). Confirm parameters before signing."
+      image: "/images/guides/swap-eth-to-usdc-in-browser/step-2.png"
+    - name: "Review and sign"
+      text: "When the flow requires a signature, unlock your on-device vault for the session, review the transaction summary, and sign in Chrome."
+      image: "/images/guides/swap-eth-to-usdc-in-browser/step-3.png"
+---
+
+**You can swap ETH to USDC in your browser without sending funds to a centralized exchange by using a non-custodial workflow: quote the route, confirm slippage and fees, and sign with a key that stays on your device.** Speed OS is a Chrome extension that replaces the new tab with a trading workspace; swapping uses the same **Speed / Lightspeed-CLI** tool model you would run in a terminal, but rendered in the new tab.
+
+**At a glance**
+
+- **No CEX account** is required for the *swap mechanics* described here (you are still subject to onchain protocol and aggregator behavior).
+- **Keys** are intended to live in the **on-device vault** (not on Speed’s servers). If you also use optional MCP, treat it as **config merge**, not key custody.
+- **Screens below** are **placeholders** copied from a brand asset so the layout works; replace with real new-tab captures from your machine for production polish.
+
+## Step 1 — Open the Speed OS new tab
+
+Open a new tab. You should see the Speed OS shell (Ask, panels, optional terminal). If you do not, confirm the extension is installed and the new tab override is enabled in Chrome.
+
+![Speed OS new tab shell — placeholder; replace with an in-product screenshot of your new tab UI](/images/guides/swap-eth-to-usdc-in-browser/step-1.png)
+
+## Step 2 — Start the swap (ETH → USDC)
+
+Start a swap flow with an explicit **from asset (ETH)**, **to asset (USDC)**, and **chain** selection. If you are practicing, prefer a small size and a chain with predictable fees. Read the quote details: price impact, fees, and any router warnings.
+
+![Swap / quote state in the new tab — placeholder; replace with a real quote screen](/images/guides/swap-eth-to-usdc-in-browser/step-2.png)
+
+## Step 3 — Sign with your local vault
+
+When the flow needs an onchain transaction, unlock the vault for the session if prompted, then **read the transaction preview** before you sign. This is the same “don’t sign blind” rule as any wallet—just in a new-tab workspace.
+
+![Signing / unlock flow — placeholder; replace with a real pre-sign or wallet UI capture](/images/guides/swap-eth-to-usdc-in-browser/step-3.png)
+
+**FAQ**
+
+**Is this the same as MetaMask + Uniswap?**  
+It is a different *session shape*. MetaMask is often a signing surface around a dapp. Speed OS is a **workspace** for repeated tool actions from the new tab.
+
+**What if I need USDC on another chain?**  
+That is a **bridge** problem, not only a swap. See the [bridge guide](/guides/bridge-tokens-across-chains-in-browser).
+
+**Can I automate this?**  
+Optional MCP is about environment parity for agent-style runs; it does not remove your responsibility to review what gets signed.
+
+## Related
+
+- [Bridge tokens across chains in the browser](/guides/bridge-tokens-across-chains-in-browser) — when “swap” is not enough.
+- [MCP, agents, and browser trading](/concepts/mcp-crypto-trading-agents) — why optional MCP exists next to a vault.

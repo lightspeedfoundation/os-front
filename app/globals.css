@@ -27,8 +27,8 @@ html {
 body {
   @apply bg-void text-soft antialiased;
   font-family: var(--font-space-mono), ui-monospace, monospace;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
@@ -40,7 +40,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.36' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
-  opacity: 0.35;
+  opacity: 0.22;
 }
 
 body > * {
@@ -50,7 +50,7 @@ body > * {
 
 @media (prefers-reduced-motion: reduce) {
   body::before {
-    opacity: 0.12;
+    opacity: 0.08;
   }
 }
 
@@ -71,4 +71,43 @@ body > * {
 /* Legacy light utilities — unused on dark landing; kept for backwards compat */
 .noise-overlay {
   pointer-events: none;
+}
+
+/* HTML from Velite markdown (s.markdown) — article bodies */
+.velite-html p {
+  @apply mt-5 font-light leading-8 text-mutted first:mt-0;
+}
+.velite-html h2 {
+  @apply mt-12 border-t border-borderw/70 pt-7 font-display text-2xl font-bold tracking-tight text-soft first:mt-0 first:border-0 first:pt-0;
+}
+.velite-html h3 {
+  @apply mt-9 font-display text-xl font-semibold text-soft;
+}
+.velite-html ul,
+.velite-html ol {
+  @apply my-5 list-outside pl-6 text-mutted marker:text-neon/70;
+}
+.velite-html ul {
+  @apply list-disc;
+}
+.velite-html ol {
+  @apply list-decimal;
+}
+.velite-html li {
+  @apply mt-2.5 pl-1.5 leading-7;
+}
+.velite-html a {
+  @apply text-neon underline decoration-neon/30 underline-offset-2 transition hover:decoration-neon;
+}
+.velite-html strong {
+  @apply font-semibold text-soft;
+}
+.velite-html img {
+  @apply my-7 w-full max-w-2xl rounded-lg border border-borderw bg-void2 shadow-[0_8px_28px_rgba(0,0,0,0.35)];
+}
+.velite-html blockquote {
+  @apply my-4 border-l-2 border-neon/50 pl-4 text-sm text-mutted2;
+}
+.velite-html code {
+  @apply rounded bg-void2/80 px-1.5 py-0.5 text-[0.92em] text-soft;
 }

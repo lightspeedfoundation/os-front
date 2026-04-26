@@ -5,10 +5,11 @@ import { CHROME_WEB_STORE_URL } from "@/lib/chrome-store";
 import { GITHUB_SPEED_MCP_URL } from "@/lib/site-links";
 
 const links = [
-  { href: "#product", label: "Product" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#faq", label: "FAQ" },
-];
+  { href: "/#product", label: "Product" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/learn", label: "Learn" },
+] as const;
 
 export function Header() {
   return (
@@ -21,13 +22,13 @@ export function Header() {
 
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="rounded-md px-3.5 py-1.5 font-mono text-[12px] tracking-wide text-mutted transition hover:bg-borderw hover:text-soft"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <a
             href={GITHUB_SPEED_MCP_URL}
@@ -48,13 +49,13 @@ export function Header() {
           </summary>
           <div className="absolute right-0 top-[calc(100%+8px)] z-50 min-w-[220px] rounded-xl border border-borderw2 bg-void3/95 p-2 shadow-xl backdrop-blur-xl">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 className="block rounded-lg px-3 py-2.5 font-mono text-[13px] text-mutted2 transition hover:bg-borderw hover:text-soft"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
             <a
               href={GITHUB_SPEED_MCP_URL}
